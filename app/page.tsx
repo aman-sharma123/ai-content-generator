@@ -1,100 +1,120 @@
-import Image from "next/image";
+import Link from "next/link";
+import { LucideBrain, LucideFileText, LucideYoutube } from "lucide-react";
 
-export default function Home() {
+export default function MainPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      {/* Navbar */}
+      <nav className="flex justify-between items-center px-4 py-4 bg-white shadow-md">
+        <div className="text-2xl font-bold text-indigo-700">AI Guru</div>
+        <div className="flex space-x-4">
+          <Link
+            href="/sign-in"
+            className="px-4 py-2 border border-indigo-700 text-indigo-700 rounded hover:bg-indigo-50"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Sign In
+          </Link>
+          <Link
+            href="/sign-up"
+            className="px-4 py-2 bg-indigo-700 text-white rounded hover:bg-indigo-800"
           >
-            Read our docs
-          </a>
+            Sign Up
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </nav>
+
+      {/* Hero Section */}
+      <header className="text-center py-16 px-4 bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+        <h1 className="text-4xl font-extrabold sm:text-3xl">
+          AI Content Made Simple
+        </h1>
+        <p className="mt-4 text-lg sm:text-base">
+          Generate YouTube video descriptions, tags, and SEO-friendly content in seconds with AI Guru.
+        </p>
+        <Link
+          href="/sign-up?redirectUrl=/dashboard"
+          className="mt-8 inline-block px-6 py-3 bg-white text-indigo-700 font-bold rounded shadow-md hover:bg-gray-100"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          Get Started for Free
+        </Link>
+      </header>
+
+      {/* Features Section */}
+      <section className="py-12 px-4">
+        <h2 className="text-3xl font-bold text-gray-800 text-center sm:text-2xl">
+          What Makes AI Guru Unique?
+        </h2>
+        <p className="text-gray-600 text-center mt-2 sm:text-sm">
+          Simplify your content creation process with cutting-edge AI tools.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 max-w-5xl mx-auto">
+          {/* Feature 1 */}
+          <div className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+            <LucideYoutube className="mx-auto text-indigo-700 w-12 h-12 mb-4" />
+            <h3 className="text-xl font-bold text-gray-800 text-center sm:text-lg">
+              YouTube Optimization
+            </h3>
+            <p className="text-gray-600 mt-2 text-center sm:text-sm">
+              Generate video titles, descriptions, and tags optimized for higher engagement.
+            </p>
+          </div>
+          {/* Feature 2 */}
+          <div className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+            <LucideFileText className="mx-auto text-indigo-700 w-12 h-12 mb-4" />
+            <h3 className="text-xl font-bold text-gray-800 text-center sm:text-lg">
+              SEO-Friendly Content
+            </h3>
+            <p className="text-gray-600 mt-2 text-center sm:text-sm">
+              Create content tailored for search engines, boosting visibility.
+            </p>
+          </div>
+          {/* Feature 3 */}
+          <div className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+            <LucideBrain className="mx-auto text-indigo-700 w-12 h-12 mb-4" />
+            <h3 className="text-xl font-bold text-gray-800 text-center sm:text-lg">
+              AI-Powered Precision
+            </h3>
+            <p className="text-gray-600 mt-2 text-center sm:text-sm">
+              Powered by the latest Gemini API for fast and accurate results.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-12 bg-indigo-700 text-white text-center px-4">
+        <h2 className="text-3xl font-bold sm:text-2xl">
+          Create Content Effortlessly with AI
+        </h2>
+        <p className="mt-4 text-lg sm:text-base">
+          Join thousands of creators who trust AI Guru to simplify their workflow.
+        </p>
+        <Link
+          href="/sign-up?redirectUrl=/dashboard"
+          className="mt-6 inline-block px-6 py-3 bg-white text-indigo-700 font-bold rounded hover:bg-gray-100"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          Get Started Today
+        </Link>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-6 px-4">
+        <div className="container mx-auto flex flex-col items-center">
+          <p className="text-gray-400 text-sm text-center sm:text-xs">
+            © {new Date().getFullYear()} AI Guru. All rights reserved.
+          </p>
+          <nav className="mt-4 flex space-x-6">
+            <Link href="/terms" className="text-gray-400 hover:text-white sm:text-xs">
+              Terms
+            </Link>
+            <Link href="/privacy" className="text-gray-400 hover:text-white sm:text-xs">
+              Privacy
+            </Link>
+            <Link href="/contact" className="text-gray-400 hover:text-white sm:text-xs">
+              Contact
+            </Link>
+          </nav>
+        </div>
       </footer>
     </div>
   );
