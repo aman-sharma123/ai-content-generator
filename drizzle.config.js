@@ -1,8 +1,10 @@
 /** @type { import("drizzle-kit").Config } */
+import { config } from 'dotenv';
+config();
 export default {
   dialect: "postgresql",
   schema: "./utils/schema.tsx",
   dbCredentials: {
-    url: 'postgresql://Ai-Content-Generator_owner:IZ7lQHgDmfv5@ep-dry-haze-a12i32id.ap-southeast-1.aws.neon.tech/Ai-Content-Generator?sslmode=require'
+    url: process.env.NEXT_PUBLIC_DRIZZLE_DB_URL
   },
 };
