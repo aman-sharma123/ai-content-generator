@@ -12,12 +12,22 @@ import { pgTable, serial, text, varchar } from "drizzle-orm/pg-core";
 
 export interface HistoryItem {
     id: number;
-    formData: string;
+    FormData: string;
     templateSlug: string;
     aiResponse: string;
     createdBy: string;
     createdAt: string;
 }
+
+const transformToHistoryItem = (dbItem: any): HistoryItem => ({
+    id: dbItem.id,
+    FormData: dbItem.FormData, // Map 'FormData' to 'formData'
+    templateSlug: dbItem.templateSlug || "",
+    aiResponse: dbItem.aiResponse || "",
+    createdBy: dbItem.createdBy || "",
+    createdAt: dbItem.createdAt || "",
+});
+
 
 function HistoryTab() {
     const { user } = useUser();
@@ -42,14 +52,7 @@ function HistoryTab() {
                 .where(eq(AIOutput.createdBy, userEmail))
                 .orderBy(desc(AIOutput.createdAt));
 
-            const mappedHistory: HistoryItem[] = result.map((item) => ({
-                id: item.id, // Convert id to string
-                formData: item.FormData || "",
-                templateSlug: item.templateSlug || "", // Default to empty string if null
-                aiResponse: item.aiResponse || "", // Default to empty string if null
-                createdBy: item.createdBy || "",
-                createdAt: item.createdAt || "",
-            }));
+            const mappedHistory: HistoryItem[] = result.map(transformToHistoryItem);
 
             setHistory(mappedHistory);
             setLoading(false);
